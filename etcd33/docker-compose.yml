@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 
 services:
   etcd:
@@ -6,9 +6,13 @@ services:
     container_name: "etcd_3_3"
     restart: always
     environment:
-      ETCD_ADVERTISE_CLIENT_URLS: "http://0.0.0.0:2379"
-      ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379"
+      ETCD_ADVERTISE_CLIENT_URLS: "https://0.0.0.0:2379"
+      ETCD_LISTEN_CLIENT_URLS: "https://0.0.0.0:2379"
       ETCDCTL_API: "3"
+      ETCD_CLIENT_CERT_AUTH: "true"
+      ETCD_TRUSTED_CA_FILE: "/default.etcd/ca-cert.pem"
+      ETCD_CERT_FILE: "/default.etcd/server-cert.pem"
+      ETCD_KEY_FILE: "/default.etcd/server-key.pem"
     volumes: 
       - ./default.etcd:/default.etcd
     ports:
@@ -20,7 +24,7 @@ services:
     container_name: "etcd-manage"
     restart: always
     volumes:
-      - ./conf/config.default.ini:/app/conf/config.default.ini
+      - ./conf:/app/conf
     ports:
       - "9090:9090"
 
