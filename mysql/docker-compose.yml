@@ -1,14 +1,15 @@
-version: '3'
+version: "3"
 
 services:
-
   db:
-    image: mysql:5.7.23
+    image: bitnami/mariadb:latest
     restart: always
-    container_name: "mysql_5_7"
+    container_name: "mariadb"
     environment:
-      MYSQL_ROOT_PASSWORD: 123456
+      MARIADB_DATABASE: connect_two
+      MARIADB_ROOT_USER: root
+      MARIADB_ROOT_PASSWORD: shhh_very_secret
     ports:
       - 3306:3306
-    volumes: 
+    volumes:
       - ./data:/var/lib/mysql
