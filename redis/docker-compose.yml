@@ -9,3 +9,6 @@ services:
       - REDIS_PASSWORD=R_woyoadmin
     volumes:
       - redis:/bitnami/redis
+volumes:
+  redis:
+    driver: local
