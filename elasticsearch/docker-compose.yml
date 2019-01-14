@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  elastic:
+    restart: always
+    image: code.ngcli.com:4567/hr/es-with-plugins
+    environment:
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms10g -Xmx10g"
+    ports:
+      - 9292:9200
+      - 9393:9300
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+
+volumes:
+  esdata:
+    driver: local
