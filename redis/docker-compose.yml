@@ -9,6 +9,7 @@ services:
       - REDIS_PASSWORD=R_woyoadmin
     volumes:
       - redis:/bitnami/redis
+    command: /run.sh --maxmemory 2000mb
 volumes:
   redis:
     driver: local
