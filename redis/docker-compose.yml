@@ -6,7 +6,7 @@ services:
     ports:
       - "6379:6379"
     environment:
-      - REDIS_PASSWORD=R_woyoadmin
+      - REDIS_PASSWORD=shhh_very_secret
     volumes:
       - redis:/bitnami/redis
     command: /run.sh --maxmemory 2000mb
