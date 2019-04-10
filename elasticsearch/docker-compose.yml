@@ -13,6 +13,13 @@ services:
       - 9393:9300
     volumes:
       - esdata:/usr/share/elasticsearch/data
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.2.3
+    container_name: kibana
+    environment:
+      - "ELASTICSEARCH_URL=http://elastic:9200"
+    ports:
+      - "5601:5601"
 
 volumes:
   esdata:
